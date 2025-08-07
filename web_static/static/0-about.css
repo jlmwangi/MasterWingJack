@@ -1,0 +1,85 @@
+.main-section {
+    display: flex;
+    min-height: 70vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-bottom: 2px solid black;
+}
+
+.main-section #main-section-p {
+    font-size: 5em;
+    color: #f3ffc6;
+}
+
+.other-section {
+    display: flex;
+    min-height: 800px;
+    justify-content: center;
+    align-items: center;
+    background-image: url("images/compass.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.other-section .other-section-div {
+    display: flex;
+    border: 1px solid #995d81;
+    width: 50%;
+    min-height: 600px;
+}
+
+.other-section-div .other-section-div-image {
+    width: 35%;
+/*    height: 100%;
+    object-fit: cover;*/
+}
+
+.other-section-div .other-section-div-image img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    display: block;    
+}
+
+.other-section-div .other-section-div-text p {
+    font-size: 1.2em;
+}
+
+.other-section-div .other-section-div-text {
+    width: 65%;
+    padding: 15px;
+    background-color: #e3ebff;
+}
+
+@media(max-width: 1500px) {
+    .other-section .other-section-div {
+	width: 95%;
+    }
+}
+
+@media(max-width: 800px) {
+    .main-section .strong {
+/*	align-items:center;
+	justify-content: center;*/
+	margin-left: 30px;
+    }
+
+    .other-section .other-section-div {
+/*	flex-direction: column;*/
+	justify-content: center;
+    }
+
+    .other-section-div .other-section-div-image {
+	display: none;
+    }
+
+    .other-section-div .other-section-div-text {
+	width: 95%;
+    }
+
+    .other-section-div .other-section-div-text p {
+	font-size: 1em;
+    }
+}

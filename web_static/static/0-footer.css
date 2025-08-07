@@ -1,0 +1,108 @@
+footer {
+  background: #0d0909;
+  color: white;
+}
+
+footer #copyright {
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+
+/*.footer-content a:hover {
+    color: #636363;
+}*/
+
+.footer-content .info a,
+.footer-content .info p {
+    margin: 6px 0;
+}
+
+.footer-content .info .logohh {
+    margin-top: 10px;
+}
+
+.footer-content .discover ul {
+    list-style: none;
+}
+
+.footer-content .discover li {
+    margin-left: 15px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    color: white;
+}
+
+.footer-content .discover a {
+    text-decoration: none;
+    color: white;
+}
+
+.footer-content .discover a:hover {
+    color: #636363;
+}
+
+.footer-content .contact-us a {
+    text-decoration: none;
+    color: white;
+    margin: 6px 0;
+}
+
+.footer-content .contact-us a:hover {
+    color:#636363;
+}
+
+.footer-content .contact-us p {
+    margin: 6px 0;
+}
+
+.footer-content .contact-us #contact-us {
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #636363;
+}
+
+.footer-content .info #contact-us {
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #636363;
+}
+
+
+.footer-content .contact-us #contact-us:hover,
+.footer-content .info #contact-us:hover{
+    color: #363636;
+}
+
+.social-icons a {
+	margin: 25px;
+	font-size: 1rem;
+}
+
+@media(max-width: 800px) {
+    .footer-content {
+        display: none;
+    }
+
+    footer hr,
+    footer #copyright {
+	width: 100%;
+    }
+
+    /*footer #copyright {
+	margin-top: auto;
+    }*/
+}
+

@@ -1,0 +1,100 @@
+body {
+    background: none;
+}
+
+main {
+    width: 72%;
+    margin: 0 auto;
+/*    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;*/
+}
+
+.curriculum,
+.instructors,
+.protective-gear,
+.training-facilities,
+.uniforms {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 250px;
+    width: 100%;
+    margin: 10px;
+}
+
+.curriculum .curriculum-div,
+.instructors .instructors-div,
+.protective-gear .protective-gear-div,
+.training-facilities .training-facilities-div,
+.uniforms .uniforms-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+/*    margin: 10px;*/
+    width: 60%;
+}
+
+.curriculum .curriculum-div h2,
+.instructors .instructors-div h2,
+.protective-gear .protective-gear-div h2,
+.training-facilities .training-facilities h2,
+.uniforms .uniforms-div h2 {
+    margin: 0 auto;
+}
+
+.curriculum .curriculum-div p,
+.instructors .instructors-div p,
+.protective-gear .protective-gear-div p,
+.training-facilities .training-facilities-div p,
+.uniforms .uniforms-div p {
+    margin: 10px;
+    font-size: 1.2em;
+}
+
+.curriculum .image,
+.instructors .image,
+.protective-gear .image,
+.training-facilities .image,
+.uniforms .image {
+    width: 35%;
+    height: 100%;
+    margin: 10px;
+}
+
+.curriculum .image img,
+.instructors .image img,
+.protective-gear .image img,
+.training-facilities .image img,
+.uniforms .image img {
+    object-fit: cover;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+@media(max-width: 767px) {
+    main {
+	width: 100%;
+	margin: 0;
+    }
+
+    /*.curriculum,
+    .fitness-drills,
+    .self-defense,
+    .taekwondo,
+    .karate {
+	flex-direction: column;
+    }*/
+
+    .curriculum .image,
+    .instructors .image,
+    .protective-gear .image,
+    .training-facilities .image,
+    .uniforms .image {
+	display: none;
+    }
+}

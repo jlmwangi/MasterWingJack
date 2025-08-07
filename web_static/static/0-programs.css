@@ -1,0 +1,100 @@
+body {
+    background: none;
+}
+
+main {
+    width: 72%;
+    margin: 0 auto;
+/*    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;*/
+}
+
+.beginner,
+.fitness-drills,
+.self-defense,
+.taekwondo,
+.karate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 250px;
+    width: 100%;
+    margin: 10px;
+}
+
+.beginner .beginner-div,
+.fitness-drills .fitness-drills-div,
+.self-defense .self-defense-div,
+.taekwondo .taekwondo-div,
+.karate .karate-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+/*    margin: 10px;*/
+    width: 60%;
+}
+
+.beginner .beginner-div h2,
+.fitness-drills .fitness-drills-div h2,
+.self-defense .self-defense-div h2,
+.taekwondo .taekwondo-div h2,
+.karate .karate-div h2 {
+    margin: 0 auto;
+}
+
+.beginner .beginner-div p,
+.fitness-drills .fitness-drills-div p,
+.self-defense .self-defense-div p,
+.taekwondo .taekwondo-div p,
+.karate .karate-div p {
+    margin: 10px;
+    font-size: 1.2em;
+}
+
+.beginner .image,
+.fitness-drills .image,
+.self-defense .image,
+.taekwondo .image,
+.karate .image {
+    width: 35%;
+    height: 100%;
+    margin: 10px;
+}
+
+.beginner .image img,
+.fitness-drills .image img,
+.self-defense .image img,
+.taekwondo .image img,
+.karate .image img {
+    object-fit: cover;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+@media(max-width: 767px) {
+    main {
+	width: 100%;
+	margin: 0;
+    }
+
+    .beginner,
+    .fitness-drills,
+    .self-defense,
+    .taekwondo,
+    .karate {
+	flex-direction: column;
+    }
+
+    .beginner .image,
+    .fitness-drills .image,
+    .self-defense .image,
+    .taekwondo .image,
+    .karate .image {
+	display: none;
+    }
+}
