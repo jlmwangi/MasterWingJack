@@ -5,6 +5,11 @@
     align-items: center;
     flex-direction: column;
     border-bottom: 2px solid black;
+    background-image: url("images/curriculum.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
 }
 
 .main-section #main-section-p {

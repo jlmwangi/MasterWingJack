@@ -6,10 +6,11 @@
 
 body {
     min-height: 100vh;
-    background-image: url("images/relaxed.jpg");
+    background: #e0efde;
+    /*background-image: url("images/relaxed.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center;*/
     font-family: Georgia, "Times New Roman", sans-serif;
     display: flex;
     flex-flow: column nowrap;
@@ -27,6 +28,10 @@ main {
     justify-content: center;
     align-items: center;
     min-height: 90vh;
+    background-image: url("images/anun.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .centered-section-div {
@@ -58,13 +63,13 @@ main {
     margin-left: auto;
     margin-right: auto;*/
     margin-bottom: 15px;
-    color: #f3ffc6;
-    font: "Brush Script MT", Garamond, "Courier New";
-    font-size: 2.5em;
+    color: black;
+/*    font: "Brush Script MT", Garamond, "Courier New";*/
+    font-size: 3.5em;
 }
 
 .centered-section-div p {
-    color: white;
+    color: black;
     font-size: 1.5em;
 }
 
@@ -85,11 +90,76 @@ main {
     color: #363636;
 }
 
+.introduction-section {
+    min-height: 300px;
+    text-align: center;
+}
+
+.introduction-section h2,
+.introduction-section p {
+    margin: 15px auto;
+}
+
+.programs-section {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.programs-section .youth-programs,
+.programs-section .adult-programs {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.programs-section .youth-programs h3,
+.programs-section .youth-programs p,
+.programs-section .adult-programs p,
+.programs-section .adult-programs h3 {
+    margin: 10px;
+}
+
+.video-section {
+    margin-bottom: 25px;
+}
+
+.video-section .whatwedo {
+    text-align: center;
+    margin: 18px;
+}
+
+.video-section .whatwedovideo {
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+}
+
+.video-section .whatwedovideo video,
+.video-section .whatwedovideo p {
+    margin: 10px;
+}
+
+.video-section .whatwedovideo p {
+    line-height: 1.6;
+}
+
 @media(max-width: 800px) {
     .centered-section .centered-section-div p {
 	    display: none;
     }
     .centered-section .centered-section-div .display-on-mobile {
 	    display: block;
+    }
+
+    .introduction-section {
+	margin: 10px;
+    }
+    .programs-section {
+	flex-direction: column;
+    }
+
+    .video-section .whatwedovideo {
+	flex-direction: column;
+	justify-content: center;
     }
 }

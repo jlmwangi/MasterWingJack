@@ -1,0 +1,69 @@
+body {
+    background: #e0efde;
+}
+
+main .chapter {
+    /*margin: 0 auto;*/
+    text-align: center;
+    margin: 20px;
+}
+
+main .chapter p,
+.contact-section .contact-info p,
+.contact-section .contact-info h3 {
+    margin: 10px;
+}
+
+.contact-section .contact-info p {
+    padding: 10px;
+}
+
+main .contact-section {
+    display: flex;
+    border: 1px solid black;
+    margin: 20px auto;
+}
+
+.contact-section .contact-info {
+/*    border-right: 1px solid #e6d3a3;*/
+    width: 50%;
+}
+
+.contact-section .client-info {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("images/pattern1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+}
+
+.contact-section .contact-info,
+.contact-section .client-info form {
+    margin: 20px;
+}
+
+.contact-section .client-info label,
+.contact-section .client-info input {
+    margin: 10px;
+    padding: 10px;
+}
+
+.client-info label select,
+.client-info label textarea {
+    margin: 10px;
+    padding: 10px;
+}
+
+@media(max-width: 800px) {
+    main .contact-section {
+	flex-direction: column;
+    }
+    .contact-section .contact-info,
+    .contact-section .client-info {
+	width: 100%;
+    }
+}
