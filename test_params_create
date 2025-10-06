@@ -1,0 +1,10 @@
+create Student name="Fans"
+create Student name="Franc"
+all Student
+
+create Instructor email="mwj@gg.com" name="mwj" lesson_id="003" password="1234"
+all Instructor
+
+create Lesson name="lesson2" duration=45 instructor_id="0015"
+all Lesson
+
