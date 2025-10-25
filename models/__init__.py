@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 """ initialize models """
 
+from dotenv import load_dotenv
 from os import getenv
 
+load_dotenv()
 storage_type = getenv("MWJ_TYPE_STORAGE")
 
 if storage_type == 'db':

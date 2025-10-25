@@ -28,6 +28,8 @@ class Lesson(BaseModel, Base):
         name = ""
         duration = ""
         instructor_id = ""
+        instructors = []
+        students = []
 
     def __init__(self, *args, **kwargs):
         """initializes the lesson"""

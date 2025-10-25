@@ -43,6 +43,8 @@ class Student(BaseModel, Base):
         lesson_id = ""
         instructor_id = ""
         date = ""
+        instructors = []
+        lessons = []
 
     def __init__(self, *args, **kwargs):
         """initialize a stydent"""
@@ -56,8 +58,30 @@ class Student(BaseModel, Base):
         if 'age' in kwargs:
             self.age = kwargs['age']
 
+        if models.storage_type == "db" and not getattr(self, "instructors", None):
+            default_instructor = None
+            for inst in storage.all(Instructor).values():
+                if inst.email == "instructor@inst.com":
+                    default_instructor = inst
+                    break
+
+            #link to default instructor for each student if inst not provided
+            if default_instructor:
+                self.instructors.append(default_instructor)
+
     @classmethod
     def all(cls):
         """return all instances of this class"""
         return [str(obj) for key, obj in storage.all().items()
                 if key.startswith(cls.__name__ + ".")]
+
+    if models.storage_type != "db":
+        @property
+        def instructors(self):
+            '''return instructors'''
+            instructors_values = storage.all(Instructor).values()
+            instructors_list = []
+            for instructor in instructors_values:
+                if instructor.student_id == self.id:
+                    instructors_list.append(instructor)
+            return instructors_list

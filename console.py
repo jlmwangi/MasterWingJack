@@ -7,6 +7,10 @@ from models.base_model import BaseModel
 from models.student import Student
 from models.instructor import Instructor
 from models.lesson import Lesson
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 
 class MWJCommand(cmd.Cmd):
@@ -75,10 +79,93 @@ class MWJCommand(cmd.Cmd):
                     else:
                         print(f"** invalid parameter: {param} **")
 
+                # create instance
                 if class_name in self.classnames:
                     cls = self.classnames[class_name]
                     instance = cls(**param_dict)
+
+                    session = storage._DBStorage__session
+
+                    #link student with a default instructor and lesson
+                    if class_name == "Student":
+                        storage.new(instance)
+
+                        # ensure lesson and student are in same session
+                        lesson_name = param_dict.get("lesson")
+                        if lesson_name:
+                            lesson = session.query(Lesson).filter(Lesson.name.ilike(lesson_name)).first()
+                            if lesson:
+                                instance.lessons.append(lesson)
+
+                        # ensure instructor and student are in the same session
+                        instructor_name = param_dict.get("instructor")
+                        if instructor_name:
+                            """look for instructor with the name"""
+                            instructor = session.query(Instructor).filter(Instructor.name.ilike(instructor_name)).first()
+                            if instructor:
+                                instance.instructors.append(instructor)
+
+                        #commit the links
+                        storage.save()
+
+                    elif class_name == "Instructor":
+                        # pass STUDENT as kwargs with a value(name) to link to this instructor
+                        storage.new(instance)
+
+                        student_name = param_dict.get("student")
+                        if student_name:
+                            """look for student with the name"""
+                            student = session.query(Student).filter(Student.name.ilike(student_name)).first()
+                            if student:
+                                instance.students.append(student)
+                            '''for student in storage.all(Student).values():
+                                if getattr(student, "name", "").lower() == student_name.lower():
+                                    instance.students.append(student)
+                                    break'''
+
+                        lesson_name = param_dict.get("lesson")
+                        if lesson_name:
+                            lesson = session.query(Lesson).filter(Lesson.name.ilike(lesson_name)).first()
+                            if lesson:
+                                instance.lessons.append(lesson)
+                            '''for lesson in storage.all(Lesson).values():
+                                if getattr(lesson, "lesson", "").lower() == lesson_name.lower():
+                                    instance.lessons.append(lesson)
+                                    break'''
+
+                        # save the linkages
+                        storage.save()
+
+                    #link lesson with nstructor and student
+                    elif class_name == "Lesson":
+                        # pass INSTRUCTOR as kwargs with value(name) to link to this lesson
+                        student_name = param_dict.get("student")
+                        instructor_name = param_dict.get("instructor")
+
+                        storage.new(instance)
+
+                        if instructor_name:
+                            """look for instructor with the name"""
+                            for inst in storage.all(Instructor).values():
+                                if getattr(inst, "instructor", "").lower() == instructor_name.lower():
+                                    instance.instructors.append(inst)
+                                    #storage.new(instance)
+                                    break
+
+                        if student_name:
+                            """look for student with the name"""
+                            for student in storage.all(Student).values():
+                                if getattr(student, "name", "").lower() == student_name.lower():
+                                    instance.students.append(student)
+                                    #storage.new(instance)
+                                    break
+
+                        # commit relationships after linking
+                        storage.save()
+
+                    # save instance
                     instance.save()
+                    storage.save()
                     print(f"{instance.id}")
                 else:
                     print("** class doesn't exist **")

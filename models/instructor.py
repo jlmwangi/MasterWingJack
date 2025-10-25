@@ -26,6 +26,8 @@ class Instructor(BaseModel, Base):
         password = ""
         name = ""
         lesson_id = ""
+        students = []
+        instructors = []
 
     def __init__(self, *args, **kwargs):
         """initializes instructor"""
