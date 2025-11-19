@@ -102,3 +102,40 @@ class DBStorage:
     def close(self):
         """close current session"""
         self.__session.close()
+
+    def get(self, cls, id):
+        """method to retrieve one object"""
+        obj_dict = {}
+        if cls:
+            obj = self.__session.get(cls, id)
+            if obj:
+                #key = f"{obj.__class__.__name__}.{obj.id}"
+                obj_dict = obj #.to_dict()
+            else:
+                return None
+        return obj_dict
+
+    def count(self, cls=None):
+        """counts the number of objects in stotage"""
+        obj_count = 0
+        if cls:
+            objs = self.__session.query(cls).all()
+            obj_count += len(objs)
+
+            return obj_count
+        else:
+            from models.student import Student
+            from models.lesson import Lesson
+            from models.instructor import Instructor
+            classnames = {
+                    "Student": Student,
+                    "Lesson": Lesson,
+                    "Instructor": Instructor
+                    }
+            for classname, class_type in classnames.items():
+                objs = self.__session.query(class_type).all()
+                obj_count += len(objs)
+
+            return obj_count
+
+

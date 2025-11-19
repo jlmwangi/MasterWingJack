@@ -3,12 +3,13 @@
 
 import os
 
-'''os.environ["MWJ_TYPE_STORAGE"] = "file"
-os.environ["MWJ_ENV"] = "test"'''
+os.environ["MWJ_TYPE_STORAGE"] = "file"
+'''os.environ["MWJ_ENV"] = "test"'''
 
 import unittest
 from models import storage
 from models.base_model import BaseModel
+from models.student import Student
 import json
 
 
@@ -112,6 +113,36 @@ class TestFileStorage(unittest.TestCase):
             data1 = json.load(file1)
 
         self.assertNotIn(key, data1)
+
+    def test_get_method(self):
+        '''test that get method retrieves an obj from file storage'''
+        obj = Student()
+        storage.new(obj)
+        storage.save()
+
+        student_id = f"{obj.id}"
+        key = f"{obj.__class__.__name__}.{obj.id}"
+        student = storage.get(Student, student_id)
+
+        self.assertIsInstance(student, Student)
+        self.assertEqual(obj.id, student_id)
+        self.assertIn(key, storage.all())
+
+    def test_count_method(self):
+        '''test that count method properly counts objects in storage'''
+        obj = Student()
+        storage.new(obj)
+        storage.save()
+
+        result = storage.count(Student)
+
+        student = Student()
+        storage.new(student)
+        storage.save()
+
+        result1 = storage.count(Student)
+
+        self.assertGreater(result1, result)
 
 
 

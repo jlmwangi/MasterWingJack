@@ -67,3 +67,21 @@ class FileStorage:
     def close(self):
         '''call reload method to desirialize objects'''
         self.reload()
+
+    def get(self, cls, id):
+        """retrieves one object from storage"""
+        if cls is None or id is None:
+            return None
+        
+        key = f"{cls.__name__}.{id}"
+        return self.__objects.get(key)
+
+    def count(self, cls=None):
+        '''count number of objects in storage'''
+        if cls is None:
+            return len(self.__objects)
+
+        return len({
+            key: obj for key, obj in self.__objects.items()
+            if key.startswith(cls.__name__ + ".")
+        })

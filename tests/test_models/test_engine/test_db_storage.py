@@ -135,3 +135,30 @@ class TestDbStorage(unittest.TestCase):
 
         self.assertNotIn(key, res)
 
+    def test_get_method(self):
+        """test get method retrieves one object based on cls and id"""
+        #student_id = f"{student.id}"
+        key = f"Student.{self.student_id}"
+        result = self.storage.get(Student, self.student_id)
+
+        self.assertIsInstance(result, Student)
+        self.assertIn(key, self.storage.all())
+        self.assertEqual(result.id, self.student_id)
+
+    def test_count_method(self):
+        '''test that count method counts number of objects in storage'''
+        result = self.storage.count(Student)
+        res = self.storage.count()
+
+        self.assertEqual(result, res)
+        student3 = Student(
+                name="who",
+                email="when@g.com",
+                password="what",
+                age=13
+            )
+        self.storage.new(student3)
+
+        res2 = self.storage.count(Student)
+        self.assertGreater(res2, res)
+
