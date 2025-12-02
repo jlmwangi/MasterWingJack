@@ -10,6 +10,7 @@ from sqlalchemy import Column, String, Integer, ForeignKey, DateTime, Table
 from sqlalchemy.orm import relationship
 from os import getenv
 import datetime
+from utils.security import hash_password
 
 
 if getenv("MWJ_TYPE_STORAGE") == 'db':
@@ -52,12 +53,13 @@ class Student(BaseModel, Base):
         if 'email' in kwargs:
             self.email = kwargs['email']
         if 'password' in kwargs:
-            self.password = kwargs['password']
+            self.password = hash_password(kwargs['password'])
         if 'name' in kwargs:
             self.name = kwargs['name']
         if 'age' in kwargs:
             self.age = kwargs['age']
 
+        #assign a default instructor if none was explicitly provided
         if models.storage_type == "db" and not getattr(self, "instructors", None):
             default_instructor = None
             for inst in storage.all(Instructor).values():

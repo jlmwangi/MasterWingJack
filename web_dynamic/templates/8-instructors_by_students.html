@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<HTML lang="en">
+    <HEAD>
+        <TITLE>MASTER JJ</TITLE>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="../static/styles/4-common.css?{{ cache_id }}" />
+
+    </HEAD>
+    <BODY>
+        <H1>STUDENTS</H1>
+        <UL>
+          {% for student in students %}
+	    <LI>{{ student.id }}<B>{{ student.name }}</B>
+	      <UL>
+	      {% for instructor in instructors %}
+	        <LI>{{ instructor.id }}<B>{{ instructor.name }}</B></LI>
+              {% endfor %}
+	      </UL>
+	    </LI>
+	  {% endfor %}
+	</UL>
+    </BODY>
+</HTML>

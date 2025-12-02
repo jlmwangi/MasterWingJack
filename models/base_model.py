@@ -64,7 +64,10 @@ class BaseModel:
         obj_dict["created_at"] = self.created_at.isoformat()
         obj_dict["updated_at"] = self.updated_at.isoformat()
 
-        obj_dict.pop("_sa_instance_state", None)
+        if getenv("MWJ_TYPE_STORAGE") == "db":
+            '''remove sqlalchemy _sa_instance_state and password too'''
+            obj_dict.pop("_sa_instance_state", None)
+            obj_dict.pop("password", None)
 
         return obj_dict
 

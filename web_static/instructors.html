@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WingJack</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <h1>INSTRUCTORS</h1>
+
+    <div id="instructors">
+        <p>Loading...</p>
+    </div>
+
+    <h2>Add Instructor</h2>
+    <form id="addInstructorForm">
+	<input type="text" id="name" placeholder="Name" required>
+	<input type="email" id="email" placeholder="Email@email.com" required>
+	<input type="text" id="password" placeholder="Password">
+	<button type="submit">Add</button>
+    </form>
+
+    <div id="message"></div>
+
+    <script src="static/scripts/api.js"></script>
+    <script src="static/scripts/instructors.js"></script>
+
+</body>
+</html>

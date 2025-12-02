@@ -1,19 +1,24 @@
 #!/usr/bin/python3
 '''a new view for instructor objects'''
 
-from flask import jsonify, abort, request
+from flask import jsonify, abort, request, render_template
 from api.v1.views import app_views
 from models import storage
 from models.instructor import Instructor
+import uuid
+
 
 @app_views.route('/instructors', methods=['GET'], strict_slashes=False)
 def get_instructors():
     '''retrieves list of all instructors'''
     instructors_list = []
+    cache_id = uuid.uuid4()
+
     for instructor in storage.all(Instructor).values():
         instructors_list.append(instructor.to_dict())
 
     return jsonify(instructors_list)
+    #return render_template("instructors.html", instructors=instructors_list, cache_id=cache_id)
 
 @app_views.route('/instructors/<instructor_id>', methods=['GET'], strict_slashes=False)
 def get_instructor(instructor_id):

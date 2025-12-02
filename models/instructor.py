@@ -6,6 +6,7 @@ from models import storage
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, Integer, ForeignKey
 from sqlalchemy.orm import relationship
+from utils.security import hash_password
 
 
 class Instructor(BaseModel, Base):
@@ -35,7 +36,7 @@ class Instructor(BaseModel, Base):
         if 'email' in kwargs:
             self.email = kwargs['email']
         if 'password' in kwargs:
-            self.password = kwargs['password']
+            self.password = hash_password(kwargs['password'])
         if 'name' in kwargs:
             self.name = kwargs['name']
 
